@@ -50,7 +50,7 @@ function addMessage(type, user, message) {
             if (username == user) {
                 ul.innerHTML += `<li class="m-txt1"><span class="me">Eu</span> - ${ new Date().toLocaleDateString('pt-BR') + ' ' + new Date().toLocaleTimeString() }</br>${message}</li>`;
             } else {
-                ul.innerHTML += `<li class="m-txt2"><span>${user}</span><br>${message}</li>`;
+                ul.innerHTML += `<li class="m-txt2"><span>${user}</span> - ${ new Date().toLocaleDateString('pt-BR') + ' ' + new Date().toLocaleTimeString() }<br>${message}</li>`;
             }
         break;
     }
