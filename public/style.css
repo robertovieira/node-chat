@@ -65,7 +65,6 @@ ul, li {
 .userList li {
     padding: 5px;
     font-size: 15px;
-    background-color: #444;
 }
 
 .chatList li.m-status {
