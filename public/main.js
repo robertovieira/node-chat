@@ -8,20 +8,35 @@ let chatPage = document.querySelector('#chatPage');
 
 let loginInput = document.querySelector('#loginNameInput');
 let textInput = document.querySelector('#chatTextInput');
+let buttonLogin = document.querySelector('#buttonLogin')
+
+let userListHTML = document.querySelector('.userList');
 
 loginInput.focus();
 
 loginPage.style.display = 'flex';
 chatPage.style.display = 'none';
 
+if (window.screen.availWidth <= 450) {
+    userListHTML.classList.add("hide");
+} else {
+    userListHTML.classList.remove("hide");
+}
+
 function renderUserList() {
-    let ul = document.querySelector('.userList');
-    ul.innerHTML = '';
+    userListHTML.innerHTML = 'Usuários conectados<hr>';
 
     userList.forEach(i => {
-        ul.innerHTML += `<li>${i}</li>`;
-        console.log(ul.innerHTML);
+        userListHTML.innerHTML += `<li>${i} ${i == username ? '(Você)' : ''}</li>`;
     });
+
+    // let ul = document.querySelector('.userList');
+    // ul.innerHTML = '';
+
+    // userList.forEach(i => {
+    //     ul.innerHTML += `<li>${i}</li>`;
+    //     console.log(ul.innerHTML);
+    // });
 }
 
 function addMessage(type, user, message) {
@@ -39,27 +54,53 @@ function addMessage(type, user, message) {
     ul.scrollTop = ul.scrollHeight;
 }
 
+function sendMessage() {
+    let msg = textInput.value.trim();
+
+    textInput.value = '';
+
+    if (msg !== '') {
+        addMessage('msg', username, msg);
+        socket.emit('send-msg', msg);
+    }
+}
+
+function login() {
+    let name = loginNameInput.value.trim() + '#' + Math.floor(Math.random() * 1000).toString();
+
+    if (name !== '') {
+        username = name;
+        document.title = `Chat (${username})`;
+        socket.emit('join-request', username);
+    }
+}
+
 loginInput.addEventListener('keyup', (e) => {
     if (e.keyCode === 13) {
-        let name = loginNameInput.value.trim() + '#' + Math.floor(Math.random() * 1000).toString();
-        if (name !== '') {
-            username = name;
-            document.title = `Chat (${username})`;
-            socket.emit('join-request', username);
-        }
+        login();
     }
+});
+
+buttonLogin.addEventListener('click', (e) => {
+    login();
 });
 
 textInput.addEventListener('keyup', (e) => {
     if (e.keyCode === 13) {
-        let msg = textInput.value.trim();
-        textInput.value = '';
-
-        if (msg !== '') {
-            addMessage('msg', username, msg);
-            socket.emit('send-msg', msg);
-        }
+        sendMessage();
     }
+});
+
+userListHTML.addEventListener('click', (e) => {
+    if (userListHTML.classList.contains('hide')) {
+        userListHTML.classList.remove("hide");
+    } else {
+        userListHTML.classList.add("hide");
+    }
+});
+
+document.querySelector('#chatButtonSend').addEventListener('click', (e) => {
+    sendMessage();
 });
 
 socket.on('user-ok', (list) => {    
