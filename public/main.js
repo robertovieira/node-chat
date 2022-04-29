@@ -7,7 +7,7 @@ let loginPage = document.querySelector('#loginPage');
 let chatPage = document.querySelector('#chatPage');
 
 let loginInput = document.querySelector('#loginNameInput');
-// let textInput = document.querySelector('#chatTextInput');
+let textInput = document.querySelector('#chatTextInput');
 let buttonLogin = document.querySelector('#buttonLogin')
 
 let userListHTML = document.querySelector('.userList');
@@ -59,14 +59,14 @@ function addMessage(type, user, message) {
 }
 
 function sendMessage() {
-    // let msg = textInput.value.trim();
+    let msg = textInput.value.trim();
 
-    // textInput.value = '';
+    textInput.value = '';
 
-    // if (msg != '') {
-    //     addMessage('msg', username, msg);
-    //     socket.emit('send-msg', msg);
-    // }
+    if (msg != '') {
+        addMessage('msg', username, msg);
+        socket.emit('send-msg', msg);
+    }
 }
 
 function login() {
@@ -89,11 +89,11 @@ buttonLogin.addEventListener('click', (e) => {
     login();
 });
 
-// textInput.addEventListener('keyup', (e) => {
-//     if (e.keyCode === 13) {
-//         sendMessage();
-//     }
-// });
+textInput.addEventListener('keyup', (e) => {
+    if (e.keyCode === 13) {
+        sendMessage();
+    }
+});
 
 userListHTML.addEventListener('click', (e) => {
     if (userListHTML.classList.contains('hide')) {
