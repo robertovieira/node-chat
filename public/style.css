@@ -105,13 +105,14 @@ ul, li {
 }
 
 .userList {
-    width: 200px;
+    width: 220px;
     background-color: #2A2438;
     color: #DBD8E3;
     overflow-y: auto;
     max-height: calc(100vh - 40px);
     padding: 10px;
     border-radius: 10px;
+    margin-right: -20px;
 }
 
 .userList li {
@@ -120,7 +121,7 @@ ul, li {
 }
 
 .hide {
-    margin-right: -160px;
+    margin-right: -180px;
 }
 
 .chatInput {
