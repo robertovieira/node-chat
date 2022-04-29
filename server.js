@@ -9,8 +9,11 @@ const io = socketIO(server);
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-server.listen(3000);
-console.log('Server listening on port 3000');
+const port = process.env.PORT || 3000;
+
+server.listen(port, () => {
+    console.info('Server listening on port 3000');
+});
 
 let connectedUsers = [];
 
