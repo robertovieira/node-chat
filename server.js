@@ -18,15 +18,23 @@ server.listen(port, () => {
 let connectedUsers = [];
 
 io.on('connection', (socket) => {
-    console.log('New Connect');
-
+    
     socket.on('join-request', (username) => {
+        let hasName = connectedUsers = connectedUsers.filter(u => u == socket.username);
+
+        if (hasName.length > 0) {
+            username += '#' + Math.floor(Math.random() * 1000).toString();
+        }
+
         socket.username = username;
         connectedUsers.push(username);
         console.log( connectedUsers );
 
         // emite esse evento apenas para a conexao atual
-        socket.emit('user-ok', connectedUsers);
+        socket.emit('user-ok', {
+            list: connectedUsers,
+            username
+        });
 
         // emite este evento para todas as conexoes
         socket.broadcast.emit('list-update', {
@@ -37,7 +45,6 @@ io.on('connection', (socket) => {
 
     socket.on('disconnect', () => {
         connectedUsers = connectedUsers.filter(u => u !== socket.username);
-        console.log(connectedUsers);
 
         socket.broadcast.emit('list-update', {
             left: socket.username,

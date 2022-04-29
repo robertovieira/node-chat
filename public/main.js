@@ -73,7 +73,7 @@ function login() {
     let name = loginNameInput.value.trim();
 
     if (name !== '') {
-        username = name + '#' + Math.floor(Math.random() * 1000).toString();
+        username = name;
         document.title = `Chat (${username})`;
         socket.emit('join-request', username);
     }
@@ -107,14 +107,19 @@ document.querySelector('#chatButtonSend').addEventListener('click', (e) => {
     sendMessage();
 });
 
-socket.on('user-ok', (list) => {    
+socket.on('user-ok', (obj) => {    
     loginPage.style.display = 'none';
     chatPage.style.display = 'flex';
     textInput.focus();
     
     addMessage('status', null, 'Usuário conectado!');
 
-    userList = list;
+    console.log("OBJ.LIST", obj.list);
+
+    userList = obj.list;
+
+    console.log("USER.LIST", userList);
+    username = obj.username;
     renderUserList();
 });
 
