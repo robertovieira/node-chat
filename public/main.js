@@ -63,7 +63,7 @@ function sendMessage() {
 
     textInput.value = '';
 
-    if (msg !== '') {
+    if (msg != '') {
         addMessage('msg', username, msg);
         socket.emit('send-msg', msg);
     }
