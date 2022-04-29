@@ -85,9 +85,9 @@ loginInput.addEventListener('keyup', (e) => {
     }
 });
 
-// buttonLogin.addEventListener('click', (e) => {
-//     login();
-// });
+buttonLogin.addEventListener('click', (e) => {
+    login();
+});
 
 textInput.addEventListener('keyup', (e) => {
     if (e.keyCode === 13) {
@@ -103,9 +103,9 @@ userListHTML.addEventListener('click', (e) => {
     }
 });
 
-document.querySelector('#chatButtonSend').addEventListener('click', (e) => {
-    sendMessage();
-});
+// document.querySelector('#chatButtonSend').addEventListener('click', (e) => {
+//     sendMessage();
+// });
 
 socket.on('user-ok', (list) => {    
     loginPage.style.display = 'none';
