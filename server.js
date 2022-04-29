@@ -18,9 +18,9 @@ server.listen(port, () => {
 let connectedUsers = [];
 
 io.on('connection', (socket) => {
-    
+
     socket.on('join-request', (username) => {
-        let hasName = connectedUsers = connectedUsers.filter(u => u == socket.username);
+        let hasName = connectedUsers = connectedUsers.filter(u => u == username);
 
         if (hasName.length > 0) {
             username += '#' + Math.floor(Math.random() * 1000).toString();
