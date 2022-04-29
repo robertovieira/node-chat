@@ -113,7 +113,6 @@ ul, li {
     padding: 10px;
     border-radius: 10px;
     margin-right: -20px;
-    z-index: 99;
 }
 
 .userList li {

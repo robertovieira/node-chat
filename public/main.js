@@ -7,7 +7,7 @@ let loginPage = document.querySelector('#loginPage');
 let chatPage = document.querySelector('#chatPage');
 
 let loginInput = document.querySelector('#loginNameInput');
-let textInput = document.querySelector('#chatTextInput');
+// let textInput = document.querySelector('#chatTextInput');
 let buttonLogin = document.querySelector('#buttonLogin')
 
 let userListHTML = document.querySelector('.userList');
@@ -59,14 +59,14 @@ function addMessage(type, user, message) {
 }
 
 function sendMessage() {
-    let msg = textInput.value.trim();
+    // let msg = textInput.value.trim();
 
-    textInput.value = '';
+    // textInput.value = '';
 
-    if (msg != '') {
-        addMessage('msg', username, msg);
-        socket.emit('send-msg', msg);
-    }
+    // if (msg != '') {
+    //     addMessage('msg', username, msg);
+    //     socket.emit('send-msg', msg);
+    // }
 }
 
 function login() {
@@ -103,9 +103,9 @@ userListHTML.addEventListener('click', (e) => {
     }
 });
 
-document.querySelector('#chatButtonSend').addEventListener('click', (e) => {
-    sendMessage();
-});
+// document.querySelector('#chatButtonSend').addEventListener('click', (e) => {
+//     sendMessage();
+// });
 
 socket.on('user-ok', (list) => {    
     loginPage.style.display = 'none';
