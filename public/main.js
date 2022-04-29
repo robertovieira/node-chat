@@ -85,9 +85,9 @@ loginInput.addEventListener('keyup', (e) => {
     }
 });
 
-buttonLogin.addEventListener('click', (e) => {
-    login();
-});
+// buttonLogin.addEventListener('click', (e) => {
+//     login();
+// });
 
 textInput.addEventListener('keyup', (e) => {
     if (e.keyCode === 13) {
