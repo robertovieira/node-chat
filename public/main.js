@@ -121,7 +121,7 @@ socket.on('list-update', (data) => {
     }
 
     if (data.left) {
-        addMessage('status', null, `${data.left} saiu no chat.`);
+        addMessage('status', null, `${data.left} saiu do chat.`);
     }
 
     // atualizando a lista de usuario
