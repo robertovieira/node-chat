@@ -25,20 +25,33 @@ io.on('connection', (socket) => {
         let hasName = connectedUsers.includes(username);
         // let hasName = connectedUsers.filter(u => u.toLowerCase() == username.toLowerCase());
 
-        console.log("HAS NAME", hasName);
-
-        console.log("ENCONTROU", hasName.length > 0);
-
         if (hasName) {
-            console.log("ENTROU NO IF")
-            username += '#' + Math.floor(Math.random() * 1000).toString();
-        }
+            let foundNewUser = false;
+            let newUser = '';
 
-        console.log("NEW NAME", username);
+            // procura um nome disponivel
+            while (!foundNewUser) {
+                newUser = username + '#' + Math.floor(Math.random() * 1000).toString();
+
+                hasName = connectedUsers.includes(newUser);
+
+                if (!hasName) {
+                    username = newUser;
+                    foundNewUser = true;
+                }
+            }
+
+            // username += '#' + Math.floor(Math.random() * 1000).toString();
+
+            // hasName = connectedUsers.includes(username);
+
+            // if (hasName) {
+            //     username += '1';
+            // }
+        }
 
         socket.username = username;
         connectedUsers.push(username);
-        console.log("GERAL", connectedUsers );
 
         // emite esse evento apenas para a conexao atual
         socket.emit('user-ok', {
