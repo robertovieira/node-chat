@@ -72,8 +72,6 @@ function sendMessage() {
 function login() {
     let name = loginNameInput.value.trim();
 
-    console.log("NAME", name);
-
     if (name !== '') {
         username = name + '#' + Math.floor(Math.random() * 1000).toString();
         document.title = `Chat (${username})`;
