@@ -7,11 +7,9 @@
 
 body {
     font-family: 'Montserrat', 'Arial', 'Helvetica', 'sans-serif';
-    min-height: 100vh;
-    /* min-width: 100vh; */
 }
 /* ul e li tem margin */
-ul, li, button {
+ul, li {
     margin: 0;
     padding: 0;
     list-style: none;
