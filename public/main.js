@@ -24,8 +24,8 @@ if (window.screen.availWidth <= 450) {
 }
 
 setTimeout(function () {
-    let viewheight = $(window).height();
-    let viewwidth = $(window).width();
+    let viewheight = window.screen.availHeight;
+    let viewwidth = window.screen.availWidth;
     let viewport = document.querySelector("meta[name=viewport]");
     viewport.setAttribute("content", "height=" + viewheight + "px, width=" + viewwidth + "px, initial-scale=1.0");
     }, 300);
@@ -121,11 +121,7 @@ socket.on('user-ok', (obj) => {
     
     addMessage('status', null, 'Usuário conectado!');
 
-    console.log("OBJ.LIST", obj.list);
-
     userList = obj.list;
-
-    console.log("USER.LIST", userList);
     username = obj.username;
     renderUserList();
 });
