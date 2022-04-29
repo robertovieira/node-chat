@@ -48,7 +48,7 @@ function addMessage(type, user, message) {
         break;
         case 'msg':
             if (username == user) {
-                ul.innerHTML += `<li class="m-txt1"><span class="me">${user} (Você)</span><br>${message}</li>`;
+                ul.innerHTML += `<li class="m-txt1"><span class="me">Eu</span><br>${message}</li>`;
             } else {
                 ul.innerHTML += `<li class="m-txt2"><span>${user}</span><br>${message}</li>`;
             }
