@@ -46,8 +46,12 @@ function addMessage(type, user, message) {
         case 'status':
             ul.innerHTML += `<li class="m-status">${message}</li>`;
         break;
-        case 'msg':            
-            ul.innerHTML += `<li class="m-txt"><span ${username == user ? 'class="me"' : ''}>${user}</span>: ${message}</li>`;
+        case 'msg':
+            if (username == user) {
+                ul.innerHTML += `<li class="m-txt1"><span class="me">${user} (Você)</span><br>${message}</li>`;
+            } else {
+                ul.innerHTML += `<li class="m-txt2"><span>${user}</span><br>${message}</li>`;
+            }
         break;
     }
 
@@ -108,7 +112,7 @@ socket.on('user-ok', (list) => {
     chatPage.style.display = 'flex';
     textInput.focus();
     
-    addMessage('status', null, 'Conectado!');
+    addMessage('status', null, 'Usuário conectado!');
 
     userList = list;
     renderUserList();
@@ -134,7 +138,7 @@ socket.on('show-msg', (data) => {
 });
 
 socket.on('disconnect', () => {
-    addMessage('status', null, 'Você foi desconectado!');
+    addMessage('status', null, 'Seu usuário foi desconectado!');
     userList = [];
     renderUserList();
 });

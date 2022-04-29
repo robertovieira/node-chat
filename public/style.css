@@ -1,5 +1,12 @@
-body {
+* {
+    /* resetando */
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', 'Arial', 'Helvetica', 'sans-serif';
 }
 /* ul e li tem margin */
 ul, li {
@@ -65,8 +72,36 @@ ul, li {
 }
 
 .chatList li {
-    padding: 3px;
+    padding: 10px;
     font-size: 15px;
+    margin: 5px 0;
+}
+
+.chatList li.m-status {
+    color: #333;
+    font-style: italic;
+}
+
+.chatList li.m-txt1 {
+    background-color: #5C5470;
+    border-radius: 10px;
+    color: #fff;
+}
+
+.chatList li.m-txt2 {
+    background-color: #352F44;
+    border-radius: 10px;
+    color: #fff;
+}
+
+.chatList li.m-txt1 span,
+.chatList li.m-txt2 span {
+    font-weight: bold;
+    color: #DBD8E3;
+}
+
+.chatList li.m-txt span.me {
+    color: #2A2438;
 }
 
 .userList {
@@ -87,20 +122,6 @@ ul, li {
 
 .hide {
     margin-right: -180px;
-}
-
-.chatList li.m-status {
-    color: #333;
-    font-style: italic;
-}
-
-.chatList li.m-txt span {
-    font-weight: bold;
-    color: #00f;
-}
-
-.chatList li.m-txt span.me {
-    color: red;
 }
 
 .chatInput {
