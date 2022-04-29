@@ -20,15 +20,25 @@ let connectedUsers = [];
 io.on('connection', (socket) => {
 
     socket.on('join-request', (username) => {
-        let hasName = connectedUsers = connectedUsers.filter(u => u.toLowerCase() == username.toLowerCase());
+        username = username.toLowerCase();
 
-        if (hasName.length > 0) {
+        let hasName = connectedUsers.includes(username);
+        // let hasName = connectedUsers.filter(u => u.toLowerCase() == username.toLowerCase());
+
+        console.log("HAS NAME", hasName);
+
+        console.log("ENCONTROU", hasName.length > 0);
+
+        if (hasName) {
+            console.log("ENTROU NO IF")
             username += '#' + Math.floor(Math.random() * 1000).toString();
         }
 
+        console.log("NEW NAME", username);
+
         socket.username = username;
         connectedUsers.push(username);
-        console.log( connectedUsers );
+        console.log("GERAL", connectedUsers );
 
         // emite esse evento apenas para a conexao atual
         socket.emit('user-ok', {
