@@ -89,11 +89,11 @@ buttonLogin.addEventListener('click', (e) => {
     login();
 });
 
-textInput.addEventListener('keyup', (e) => {
-    if (e.keyCode === 13) {
-        sendMessage();
-    }
-});
+// textInput.addEventListener('keyup', (e) => {
+//     if (e.keyCode === 13) {
+//         sendMessage();
+//     }
+// });
 
 userListHTML.addEventListener('click', (e) => {
     if (userListHTML.classList.contains('hide')) {
