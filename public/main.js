@@ -103,9 +103,9 @@ userListHTML.addEventListener('click', (e) => {
     }
 });
 
-// document.querySelector('#chatButtonSend').addEventListener('click', (e) => {
-//     sendMessage();
-// });
+document.querySelector('#chatButtonSend').addEventListener('click', (e) => {
+    sendMessage();
+});
 
 socket.on('user-ok', (list) => {    
     loginPage.style.display = 'none';
